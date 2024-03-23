@@ -1,6 +1,7 @@
 <?php
     require_once("includes/config.php");
     require_once("includes/classes/FormSanitizer.php");
+    require_once("includes/classes/Constants.php");
     require_once("includes/classes/Account.php");
 
     $account = new Account($con);
@@ -41,7 +42,7 @@
             </div>
 
             <form method="POST">
-                <?php echo $account->getError("First name wrong length"); ?>
+                <?php echo $account->getError(Constants::$firstNameCharacters); ?>
                 <input type="text" name="firstName" placeholder="First name" required>
                 <input type="text" name="lastName" placeholder="Last name" required>
                 <input type="text" name="username" placeholder="Username" required>
