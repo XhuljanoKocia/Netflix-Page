@@ -22,7 +22,11 @@
                         <video autoplay muted class='previewVideo'>
                             <source src='$preview' type='type/mp4'>
                         </video>
-                        <div class='previewOverlay'></div>
+                        <div class='previewOverlay'>
+                            <div class='mainDetails'>
+                                <h3>$name</h3>
+                            </div>
+                        </div>
                     </div>";
         }
 
