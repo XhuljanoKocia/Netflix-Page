@@ -21,7 +21,8 @@
                         <img src='$thumbnail' class='previewImage' hidden>
                         <video autoplay muted class='previewVideo'>
                             <source src='$preview' type='type/mp4'>
-                        </video>         
+                        </video>
+                        <div class='previewOverlay'></div>
                     </div>";
         }
 
