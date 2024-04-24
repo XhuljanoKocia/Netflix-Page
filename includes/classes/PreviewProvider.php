@@ -19,8 +19,8 @@
 
             return "<div class='previewContainer'>
                         <img src='$thumbnail' class='previewImage' hidden>
-                        <video autoplay muted class='previewVideo'>
-                            <source src='$preview' type='type/mp4'>
+                        <video autoplay muted class='previewVideo' onended='previewEnded()'>
+                            <source src='$preview' type='video/mp4'>
                         </video>
                         <div class='previewOverlay'>
                             <div class='mainDetails'>
