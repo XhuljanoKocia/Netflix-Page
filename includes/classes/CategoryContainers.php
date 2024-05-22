@@ -23,6 +23,22 @@
         private function getCategoryHtml($sqlData, $title, $tvShows, $movies) {
             $categoryId = $sqlData["id"];
             $title = $title == null ? $sqlData["name"] : $title;
+
+            if($tvShows && $movies) {
+                $entities = EntityProvider::getEntities($this->con, $categoryId, 30);
+            }
+
+            if(sizeof($entities) == 0) {
+                return;
+            }
+
+            $entitiesHtml = "";
+
+            foreach($entities as $entity) {
+                $entitiesHtml .= $entity->getName();
+            }
+
+            return $entitiesHtml . "<br>";
         }
     }
 ?>
