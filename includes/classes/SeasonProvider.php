@@ -7,6 +7,8 @@
             $this->username = $username;
         }
 
-        public function creat($entity) {}
+        public function creat($entity) {
+            $seasons = $entity->getSeasons();
+        }
     }
 ?>
