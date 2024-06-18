@@ -46,7 +46,7 @@
 
             while($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
-                if($currentSeason != null && $currentSeason != row["season"]) {
+                if($currentSeason != null && $currentSeason != $row["season"]) {
                     $seasons[] = new Season($currentSeason, $videos);
                     $video = array();
                 }
