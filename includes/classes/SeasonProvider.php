@@ -26,5 +26,13 @@
     
             return $seasonsHtml;
         }
+
+        private function createVideoSquare($video) {
+            $id = $video->getId();
+            $thumbnail = $video->getThumbnail();
+            $title = $video->getTitle();
+            $description = $video->getDescription();
+            $episodeNumber = $video->getEpisodeNumber();
+        }
     }
 ?>
