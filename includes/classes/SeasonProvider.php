@@ -47,7 +47,7 @@
                                 <img src='$thumbnail'>
 
                                 <div class='videoInfo'>
-                                    <h4>$title</h4>
+                                    <h4>$episodeNumber. $title</h4>
                                     <span>$description</span>
                                 </div>
 
