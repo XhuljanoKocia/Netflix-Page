@@ -266,4 +266,5 @@ button i {
     color: #ffffff;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
