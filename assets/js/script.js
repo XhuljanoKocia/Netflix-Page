@@ -28,6 +28,17 @@ function startHideTimer() {
     });
 }
 
-function initVideo(videoId, userLoggedIn) {
+function initVideo(videoId, username) {
     startHideTimer();
+    updateProgressTimer(videoId, username);
+}
+
+function updateProgressTimer(videoId, username) {
+    addDuration(videoId, username);
+}
+
+function addDuration() {
+    $.post("ajax/addDuration.php", function(data) {
+        alert(data);
+    });
 }
