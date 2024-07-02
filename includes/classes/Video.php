@@ -57,5 +57,20 @@
             $query->bindValue(":id", $this->getId());
             $query->execute();
         }
+
+        public function getSeasonAndEpisode() {
+            if($this->isMovie()) {
+                return;
+            }
+
+            $season = $this->getSeasonNumber();
+            $episode = $this->getEpisodeNumber();
+
+            return "Season $season, Episode $episode";
+        }
+
+        public function isMovie() {
+            return $this->sqlData["isMovie"] == 1;
+        }
     }
 ?>

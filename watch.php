@@ -22,6 +22,7 @@
         <div class="upNextContainer">
             <h2>Up next:</h2>
             <h3><?php echo $upNextVideo->getTitle(); ?></h3>
+            <h3><?php echo $upNextVideo->getSeasonAndEpisode(); ?></h3>
         </div>
     </div>
 
