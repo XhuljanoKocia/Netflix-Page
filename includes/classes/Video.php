@@ -48,6 +48,10 @@
             return $this->sqlData["season"];
         }
 
+        public function getEntityId() {
+            return $this->sqlData["entityId"];
+        }
+
         public function incrementViews() {
             $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");
             $query->bindValue(":id", $this->getId());
