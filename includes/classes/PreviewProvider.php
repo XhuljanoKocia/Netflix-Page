@@ -18,6 +18,10 @@
             $thumbnail = $entity->getThumbnail();
 
             $videoId = VideoProvider::getEntityVideoForUser($this->con, $id, $this->username);
+            $video = new Video($this->con, $videoId);
+
+            $seasonEpisode = $video->getSeasonAndEpisode();
+            $subHeading = $video->isMovie() ? "" : "<h4>$seasonEpisode</h4>";
 
             return "<div class='previewContainer'>
                         <img src='$thumbnail' class='previewImage' hidden>
@@ -27,6 +31,7 @@
                         <div class='previewOverlay'>
                             <div class='mainDetails'>
                                 <h3>$name</h3>
+                                $subHeading
                                 <div class='buttons'>
                                     <button onclick='watchVideo($videoId)'><i class='fa-solid fa-play'></i> Play</button>
                                     <button onclick='volumeToggle(this)'><i class='fa-solid fa-volume-xmark'></i></button>
