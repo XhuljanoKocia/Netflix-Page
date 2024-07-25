@@ -8,7 +8,7 @@
         }
 
         public function getResults($inputText) {
-            
+            $entities = EntityProvider::getSearchEntities($this->con, $inputText);
         }
     }
 ?>
