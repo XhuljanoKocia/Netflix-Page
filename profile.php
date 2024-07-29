@@ -6,9 +6,18 @@
     <div class="formSection">
         <form method="POST">
             <h2>User details</h2>
-            <input type="text" name="firstName" placeholder="First name">
-            <input type="text" name="lastName" placeholder="Last name">
-            <input type="email" name="email" placeholder="Email">
+
+            <?php
+                $user = new User($con, $userLoggedIn);
+
+                $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : $user->getFirstName();
+                $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : $user->getLastName();
+                $email = isset($_POST["email"]) ? $_POST["email"] : $user->getEmail();
+            ?>
+
+            <input type="text" name="firstName" placeholder="First name" value="<?php echo $firstName; ?>">
+            <input type="text" name="lastName" placeholder="Last name" value="<?php echo $lastName; ?>">
+            <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
             <input type="submit" name="saveDetailsButton" value="Save">
         </form>
     </div>
