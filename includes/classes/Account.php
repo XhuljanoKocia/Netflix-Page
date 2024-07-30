@@ -11,6 +11,12 @@
             $this->validateFirstName($fn);
             $this->validateLastName($ln);
             $this->validateNewEmail($em, $un);
+
+            if(empty($this->errorArray)) {
+                return true;
+            }
+            
+            return false;
         }
 
         public function register($fn, $ln, $un, $em, $em2, $pw, $pw2) {
