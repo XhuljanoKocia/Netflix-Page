@@ -33,9 +33,9 @@
 
         $oldPassword = FormSanitizer::sanitizeFormPassword($_POST["oldPassword"]);
         $newPassword = FormSanitizer::sanitizeFormPassword($_POST["newPassword"]);
-        $oldPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPassword2"]);
+        $newPassword2 = FormSanitizer::sanitizeFormPassword($_POST["newPassword2"]);
 
-        if($account->updateDetails($firstName, $lastName, $email, $userLoggedIn)) {
+        if($account->updatePassword($oldPassword, $newPassword, $newPassword2, $userLoggedIn)) {
             $passwordMessage = "<div class='alertSuccess'>
                                     Password updated successfully!
                                </div>";
