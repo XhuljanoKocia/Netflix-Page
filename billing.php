@@ -12,7 +12,7 @@
     // Create new agreement
     $agreement = new Agreement();
     $agreement->setName('Subscription to Netflix')
-    ->setDescription('Recurring payments to Netflix')
+    ->setDescription('Recurring payments of €9.99 to Netflix')
     ->setStartDate(gmdate("Y-m-d\TH:i:s\Z", strtotime("+7 days", time())));
 
     // Set plan id

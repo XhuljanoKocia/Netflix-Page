@@ -28,7 +28,7 @@
 
     // Set merchant preferences
     $merchantPreferences = new MerchantPreferences();
-    $merchantPreferences->setReturnUrl($currentUrl . "?success=true")
+    $merchantPreferences->setReturnUrl($returnUrl . "?success=true")
     ->setCancelUrl($currentUrl . "?success=false")
     ->setAutoBillAmount('yes')
     ->setInitialFailAmountAction('CONTINUE')
