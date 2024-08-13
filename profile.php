@@ -4,6 +4,7 @@
     require_once("includes/classes/FormSanitizer.php");
     require_once("includes/classes/Constants.php");
     require_once("includes/paypalConfig.php");
+    require_once("includes/classes/BillingDetails.php");
 
     $detailsMessage = "";
     $passwordMessage = "";
@@ -59,7 +60,7 @@
             // Execute agreement
             $agreement->execute($token, $apiContext);
 
-            // Update user's account status
+            $result = BillingDetails::insertDetails($con, $agreement, $token, $userLoggedIn);
 
         } catch (PayPal\Exception\PayPalConnectionException $ex) {
             echo $ex->getCode();
