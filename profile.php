@@ -7,6 +7,7 @@
 
     $detailsMessage = "";
     $passwordMessage = "";
+    $subscriptionMessage = "";
 
     if(isset($_POST["saveDetailsButton"])) {
         $account = new Account($con);
@@ -69,7 +70,9 @@
         }
     } 
     else if (isset($_GET['success']) && $_GET['success'] == 'false') {
-        echo "user canceled agreement";
+        $subscriptionMessage = "<div class='alertError'>
+                                    User cancelled or something went wrong!
+                                </div>";
     }
 ?>
 
@@ -113,6 +116,11 @@
     </div>
     <div class="formSection">
         <h2>Subscription</h2>
+
+        <div class="message">
+            <?php echo $subscriptionMessage; ?>
+        </div>
+
         <?php
             if($user->getIsSubscribed()) {
                 echo "<h3>You are subscribed! Go to PayPal to cancel.</h3>";
