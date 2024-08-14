@@ -6,6 +6,8 @@
     require_once("includes/paypalConfig.php");
     require_once("includes/classes/BillingDetails.php");
 
+    $user = new User($con, $userLoggedIn);
+
     $detailsMessage = "";
     $passwordMessage = "";
     $subscriptionMessage = "";
@@ -55,12 +57,23 @@
     if (isset($_GET['success']) && $_GET['success'] == 'true') {
         $token = $_GET['token'];
         $agreement = new \PayPal\Api\Agreement();
+
+        $subscriptionMessage = "<div class='alertError'>
+                                    Somethings went wrong!
+                                </div>";
         
         try {
             // Execute agreement
             $agreement->execute($token, $apiContext);
 
             $result = BillingDetails::insertDetails($con, $agreement, $token, $userLoggedIn);
+            $result = $result && $user->setIsSubscribed(1);
+
+            if($result) {
+                $subscriptionMessage = "<div class='alertSuccess'>
+                                            You're all signed up!
+                                        </div>";
+            }
 
         } catch (PayPal\Exception\PayPalConnectionException $ex) {
             echo $ex->getCode();
@@ -83,8 +96,6 @@
             <h2>User details</h2>
 
             <?php
-                $user = new User($con, $userLoggedIn);
-
                 $firstName = isset($_POST["firstName"]) ? $_POST["firstName"] : $user->getFirstName();
                 $lastName = isset($_POST["lastName"]) ? $_POST["lastName"] : $user->getLastName();
                 $email = isset($_POST["email"]) ? $_POST["email"] : $user->getEmail();
